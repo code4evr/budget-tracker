@@ -1,0 +1,35 @@
+.login-form {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.brand-name {
+  font-size: 1.75rem;
+}
+
+.welcome {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.login-msg {
+  font-size: 1.15rem;
+  color: #555;
+}
+
+.login-form button {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.user-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.errors {
+  position: absolute;
+  color: red;
+  transition: all 200ms linear;
+}
