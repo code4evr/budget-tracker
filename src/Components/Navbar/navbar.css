@@ -1,0 +1,15 @@
+.nav-container {
+  position: fixed;
+  width: calc(100% - 16.66% - 30px);
+  z-index: 1;
+  background: #fff;
+}
+
+nav {
+  border-radius: 8px;
+}
+
+/* toggle effect */
+.nav-container-grow {
+  width: calc(100% - 30px);
+}
