@@ -7,9 +7,15 @@ import {
   FaFileInvoiceDollar,
 } from 'react-icons/fa';
 
-const Sidebar = () => {
+const Sidebar = props => {
   return (
-    <div className="sidebar-container bg-light">
+    <div
+      className={
+        props.val
+          ? 'sidebar-container bg-light hide-sidebar'
+          : 'sidebar-container bg-light'
+      }
+    >
       <div className="sidebar-brand">
         <h1>Dashboard</h1>
       </div>
