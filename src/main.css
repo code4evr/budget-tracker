@@ -1,37 +1,81 @@
-nav {
-  border-radius: 30px;
+.wrapper {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 240px;
+  width: 100%;
+  min-height: 100vh;
+  margin-top: 2.5rem;
+}
+
+.main-container-grow {
+  margin-left: auto;
+}
+
+.content {
+  padding: 3rem;
 }
 
 /* Sidebar css */
-.sidebar-container {
+.sidebar-content {
+  background: #f9f9f9;
   position: fixed;
-  top: 0;
-  left: 0;
-  min-height: 100vh;
-  width: 16.66%;
-  padding-left: -15px;
+  width: 240px;
+  height: 100%;
+  z-index: 1001;
+  border-right: 1px solid #f0f0f0;
 }
+
+.toggle {
+  margin-left: -240px;
+}
+
 .sidebar-container h1 {
   font-size: 1.25rem;
   text-align: center;
 }
 
 .sidebar-brand {
+  height: 50px;
   padding: 0.75rem 0;
   border-bottom: 1px solid #cdcdcd;
+  font-size: 1.25rem;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
 }
 
-.sidebar-list {
+.sidebar-menu {
+  margin-top: 2rem;
   padding: 0;
   list-style: none;
 }
 
 .sidebar-item {
-  padding: 0.75rem 1rem;
+  display: flex;
+  padding: 0.5rem 1rem;
+  font-size: 15px;
+  color: #333;
+  font-weight: 400;
+  margin: 0 0.5rem 0 1.5rem;
+}
+
+.sidebar-item > span:nth-child(2) {
+  padding-left: 0.5rem;
+  padding-top: 2px;
 }
 
 .sidebar-item:hover {
-  background: #ddd;
+  background: #ececec;
+  border-radius: 5px;
+  color: #111;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 /* dashboard home */
@@ -52,6 +96,61 @@ nav {
   color: #6f6bfa;
 }
 
+/* Home budget */
+.budget-info-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #999;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 1rem;
+}
+
+/* .budget-info-container::after {
+  content: '';
+  position: absolute;
+  top: 2.25rem;
+  width: 97%;
+  margin-left: 0.25rem;
+  border-bottom: 2px solid #6f6bfa;
+  opacity: 0.5;
+  content: '';
+} */
+
+.budget-info a {
+  color: #444;
+}
+
+.budget-info a:hover {
+  text-decoration: none;
+  color: #414570;
+}
+
+.budget-info {
+  width: 80%;
+}
+.budget-info > .budget-heading {
+  font-size: 1.15rem;
+  width: 100%;
+  margin-top: -4px;
+}
+
+.budget-info .form-control {
+  width: 5%;
+  height: calc(0.25em + 0.25rem + 10px);
+}
+
+.budget-edits {
+  width: 20%;
+}
+
+.budget-edits > div {
+  position: relative;
+  padding-left: 1rem;
+  z-index: -1;
+}
+
 /* images css */
 .img-container {
   margin-top: 2rem;
@@ -59,4 +158,53 @@ nav {
 }
 .add-budget {
   width: 50%;
+}
+
+/* Home */
+.btn-save {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background: #6f6bfa;
+  color: #fff;
+}
+
+.btn-cancel {
+  border: none;
+  background: none;
+}
+
+/* utils */
+.flex {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ------------------------ media queries --------------------------- */
+
+/* ------------------------ for mobile ------------------------------ */
+
+@media only screen and (max-width: 768px) {
+  .settings-wrapper {
+    width: 100%;
+  }
+
+  .settings-items {
+    width: 90%;
+  }
+
+  .settings-mobile {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .settings-content {
+    display: none;
+  }
+
+  .settings-aside-active .settings-content {
+    display: block;
+    position: relative;
+    z-index: 1001;
+  }
 }
