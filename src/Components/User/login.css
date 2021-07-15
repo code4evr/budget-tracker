@@ -1,3 +1,7 @@
+.login__wrapper {
+  min-height: 100vh;
+}
+
 .login-form {
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -32,4 +36,11 @@
   position: absolute;
   color: red;
   transition: all 200ms linear;
+}
+
+/* user registration css */
+
+.registration__wrapper {
+  padding: 1rem;
+  min-height: 100vh;
 }
