@@ -4,6 +4,10 @@
   width: 100%;
 }
 
+.remove-padding {
+  padding: 0 !important;
+}
+
 .main-container {
   display: flex;
   flex-direction: column;
@@ -194,17 +198,35 @@
   }
 
   .settings-mobile {
-    display: flex;
-    flex-direction: row;
+    margin: 0 !important;
+    flex-wrap: nowrap !important;
+    overflow: hidden;
   }
 
   .settings-content {
-    display: none;
+    right: -100%;
+    z-index: 1001;
+    transition: right 500ms linear;
   }
 
   .settings-aside-active .settings-content {
-    display: block;
-    position: relative;
-    z-index: 1001;
+    right: 100%;
+    padding: 0 !important;
+    transition: right 500ms linear;
+  }
+
+  .back-btn button {
+    position: absolute;
+    margin-top: 0.5rem;
+    background: none;
+    border: none;
+  }
+
+  .settings-content-wrapper {
+    margin-top: 3rem;
+  }
+
+  .settings-content-header {
+    padding-left: 2rem;
   }
 }
