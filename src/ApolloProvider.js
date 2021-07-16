@@ -1,17 +1,16 @@
-import React from "react";
-import App from "./App";
-import { setContext } from "apollo-link-context";
+import React from 'react';
+import App from './App';
+import { setContext } from 'apollo-link-context';
 import {
   ApolloClient,
   InMemoryCache,
-  HttpLink,
-  gql,
   ApolloProvider,
-} from "@apollo/client";
+} from '@apollo/client';
+import { createUploadLink } from 'apollo-upload-client';
 
 const authLink = setContext((_, { headers }) => {
-  if (localStorage.getItem("jwt-token")) {
-    const token = localStorage.getItem("jwt-token");
+  if (localStorage.getItem('jwt-token')) {
+    const token = localStorage.getItem('jwt-token');
     return {
       headers: {
         ...headers,
@@ -21,13 +20,15 @@ const authLink = setContext((_, { headers }) => {
   }
 });
 
+const httpLink = authLink.concat(
+  new createUploadLink({
+    uri: '/graphql',
+  }),
+);
+
 const client = new ApolloClient({
+  link: httpLink,
   cache: new InMemoryCache(),
-  link: authLink.concat(
-    new HttpLink({
-      uri: "http://localhost:5000",
-    }),
-  ),
 });
 
 export default (
