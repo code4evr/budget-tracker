@@ -1,0 +1,24 @@
+.modal-overlay {
+  position: fixed;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1100;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(48, 47, 47, 0.5);
+}
+
+.__modal {
+  position: relative;
+  width: 35%;
+  height: 35%;
+  background: #fff;
+  border: 1px solid #888;
+  border-radius: 10px;
+}
