@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Provider } from 'react-redux';
 import {
   BrowserRouter as Router,
   Route,
@@ -19,6 +20,9 @@ import AuthRoute from './utils/AuthRoute';
 import SettingsPage from './Components/Settings/SettingsPage';
 import Analytics from './Components/Analytics/Analytics';
 import './main.css';
+import NewBudget from './Components/Modals/NewBudget';
+import store from './Redux/store';
+import NewExpense from './Components/Modals/NewExpense';
 
 const App = () => {
   const [toggle, setToggle] = useState(false);
@@ -34,33 +38,33 @@ const App = () => {
           <Route path="/app">
             <AppProvider>
               <BudgetProvider>
-                <div className="wrapper">
-                  <div
-                    className={
-                      toggle
-                        ? 'sidebar-overlay'
-                        : 'sidebar-overlay show'
-                    }
-                  >
+                <Provider store={store}>
+                  <div className="wrapper">
                     <div
                       className={
-                        toggle ? 'sidebar-hide' : 'sidebar-show'
+                        toggle
+                          ? 'sidebar-overlay'
+                          : 'sidebar-overlay show'
                       }
                     >
-                      <Sidebar val={toggle} />
+                      <div
+                        className={
+                          toggle ? 'sidebar hide' : 'sidebar'
+                        }
+                      >
+                        <Sidebar val={toggle} />
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    className={
-                      toggle
-                        ? 'main-container main-container-grow'
-                        : 'main-container'
-                    }
-                  >
-                    <Navbar onclick={handleToggle} />
-                    <div className="content">
-                      <div className="container-fluid">
-                        <Switch>
+                    <div
+                      className={
+                        toggle
+                          ? 'main-container main-container-grow'
+                          : 'main-container'
+                      }
+                    >
+                      <Navbar onclick={handleToggle} />
+                      <div className="content">
+                        <div className="container-fluid">
                           <Route path="/app/home">
                             <Home />
                           </Route>
@@ -72,11 +76,14 @@ const App = () => {
                               <BudgetComponent />
                             </div>
                           </Route>
-                        </Switch>
+                        </div>
                       </div>
+
+                      <NewBudget />
+                      <NewExpense />
                     </div>
                   </div>
-                </div>
+                </Provider>
               </BudgetProvider>
             </AppProvider>
           </Route>
