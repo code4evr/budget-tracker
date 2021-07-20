@@ -3,14 +3,21 @@ import { createSlice } from '@reduxjs/toolkit';
 const toggleModalSlice = createSlice({
   name: 'modal',
   initialState: {
-    toggle: false,
+    toggleBudget: false,
+    toggleExpense: false,
   },
   reducers: {
-    toggleModal: (state, action) => {
-      state.toggle = action.payload.val;
+    toggleBudgetModal: (state, action) => {
+      state.toggleBudget = action.payload.val;
+    },
+    toggleExpenseModal: (state, action) => {
+      state.toggleExpense = action.payload.val;
     },
   },
 });
 
-export const { toggleModal } = toggleModalSlice.actions;
+export const {
+  toggleBudgetModal,
+  toggleExpenseModal,
+} = toggleModalSlice.actions;
 export default toggleModalSlice.reducer;
