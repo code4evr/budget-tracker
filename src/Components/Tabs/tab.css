@@ -1,0 +1,28 @@
+.tab-wrapper {
+  margin-bottom: 2rem;
+}
+
+.tab-buttons {
+  display: flex;
+  flex-direction: row;
+  padding: 0 0 !important;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.tab-btn {
+  position: relative;
+  width: 25%;
+}
+
+.tab-active::after {
+  content: '';
+  position: absolute;
+  border-bottom: 3px solid #7a7a7a;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 100%;
+  bottom: -1px;
+  left: 0;
+  transition: left 800ms linear;
+}
