@@ -1,0 +1,20 @@
+.btn-all,
+.btn-recent,
+.btn-archived {
+  border: none;
+  padding: 1rem 2rem;
+  width: 100%;
+  background: none;
+  color: #666;
+  text-align: left;
+  font-weight: 550;
+  font-size: 0.9rem;
+}
+
+.btn-all:hover,
+.btn-recent:hover,
+.btn-archived:hover {
+  background: #ededed;
+  color: #2a2a2a;
+  transition: all 200ms linear;
+}
