@@ -9,7 +9,6 @@ import {
 import BudgetComponent from './Components/Expenses/BudgetComponent';
 import Navbar from './Components/Navbar/Navbar';
 import Sidebar from './Components/Sidebar';
-import Home from './Components/BudgetHome/Home';
 import HomePage from './Components/Homepage/HomePage';
 import Login from './Components/User/Login';
 import Register from './Components/User/Registration';
@@ -23,6 +22,7 @@ import './main.css';
 import NewBudget from './Components/Modals/NewBudget';
 import store from './Redux/store';
 import NewExpense from './Components/Modals/NewExpense';
+import Tab from './Components/Tabs/Tab';
 
 const App = () => {
   const [toggle, setToggle] = useState(false);
@@ -64,9 +64,9 @@ const App = () => {
                     >
                       <Navbar onclick={handleToggle} />
                       <div className="content">
-                        <div className="container-fluid">
+                        <div className="container-fluid container-sm">
                           <Route path="/app/home">
-                            <Home />
+                            <Tab />
                           </Route>
                           <Route path="/app/analytics">
                             <Analytics />
