@@ -1,0 +1,29 @@
+.utility-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.utility {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.utility-checkbox {
+  width: 25px;
+}
+
+.utility-checkbox > .form-control {
+  width: 25px;
+  height: calc(0.25em + 0.25rem + 10px);
+}
+
+.other-utilities {
+  display: flex;
+  font-size: 1.25rem;
+}
+
+.page-control {
+  display: flex;
+}
