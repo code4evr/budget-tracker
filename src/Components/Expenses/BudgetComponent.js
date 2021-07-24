@@ -57,9 +57,11 @@ const BudgetComponent = () => {
         <>
           {budget.map(b => (
             <>
-              <div className="row mt-3 align-items-center">
+              <div className="row align-items-center">
                 <div className="col-6">
-                  <h1>{b ? b.title : 'Loading...'}</h1>
+                  <h1 className="budget-name">
+                    {b ? b.title : 'Loading...'}
+                  </h1>
                 </div>
                 <div className="col-6 flex">
                   <Link to="/app/home">
@@ -67,14 +69,14 @@ const BudgetComponent = () => {
                   </Link>
                 </div>
               </div>
-              <div className="mt-3 row">
+              <div className="row">
                 <BudgetCost
                   budget={b.budgetCost}
                   expenses={b.expenses}
                   rem={calculateRemaining(b.expenses, b.budgetCost)}
                 />
               </div>
-              <h1 className="mt-3">Expenses</h1>
+              <h1>Expenses</h1>
               <div className="row mt-3">
                 <div className="col-sm">
                   <input
@@ -98,9 +100,9 @@ const BudgetComponent = () => {
                         )}
                       />
                     ) : (
-                      <div className="row mt-5 ml-1 d-flex justify-content-center">
+                      <div className="row mt-3 d-flex justify-content-center">
                         <div
-                          className="col-sm-10 d-flex align-items-center create-budget"
+                          className="col-sm-12 d-flex align-items-center create-budget"
                           onClick={handleClick('add-expense')}
                         >
                           <span>
