@@ -1,21 +1,43 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import UserImg from '../../assets/user-solid.svg';
+import { GET_USER } from '../../Queries/Queries';
+import { AuthContext } from '../../Context/AuthContext';
+import { useQuery } from '@apollo/client';
 import './settings.css';
 
 const Settings = () => {
+  const { user } = useContext(AuthContext);
+
+  const { id } = user;
+  const { loading, error, data } = useQuery(GET_USER, {
+    variables: { userId: id },
+  });
+
+  if (!data) {
+    return '';
+  }
+
   return (
     <div className="settings">
       <div className="user-main">
         <div className="user">
-          <div className="user-image"></div>
+          <img
+            src={data ? data.getUser.photo : UserImg}
+            className={data ? 'user-profile' : 'user-image-custom'}
+            alt="user-img"
+          />
           <div className="user-info">
-            <div>Bidit Upadhyay</div>
-            <div className="email">hiii.saket@gmail.com</div>
+            <div>{data.getUser.name}</div>
+            <div className="email">{data.getUser.email}</div>
           </div>
         </div>
       </div>
       <ul className="settings-list">
-        <li className="settings-item">Profile</li>
-        <li className="settings-item">Change Password</li>
+        <li className="settings-item">
+          <Link to="/prefs/settings/account">Settings</Link>
+        </li>
+        <li className="settings-item">Themes</li>
         <li className="settings-item">Dark mode</li>
         <li className="settings-item">Logout</li>
       </ul>
