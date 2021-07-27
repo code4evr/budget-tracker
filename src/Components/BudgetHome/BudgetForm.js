@@ -38,41 +38,36 @@ const BudgetForm = props => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="row mt-5 justify-content-center">
-        <div className="col-sm-10">
-          <div className="create-budget ml-1">
-            <div className="form-group">
-              <input
-                type="text"
-                name="title"
-                className="form-control col-sm-12"
-                placeholder="Eg: Office Budget"
-                value={val.title}
-                onChange={handleInputChange}
-              />
-              <input
-                type="number"
-                name="budgetCost"
-                className="form-control col-sm-12"
-                placeholder="Eg. 200"
-                value={val.budgetCost}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="budget-form-btn">
-              <button
-                className="btn-save"
-                onClick={props.onclick('save')}
-              >
-                create
-              </button>
-              <button
-                className="btn-cancel"
-                onClick={props.onclick('cancel')}
-              >
-                cancel
-              </button>
-            </div>
+      <div className="row mt-4">
+        <div className="col-sm-12 create-budget-form">
+          <div className="form-group">
+            <input
+              type="text"
+              name="title"
+              className="form-control"
+              placeholder="Eg: Office Budget"
+              value={val.title}
+              onChange={handleInputChange}
+            />
+            <input
+              type="number"
+              name="budgetCost"
+              className="form-control"
+              placeholder="Eg. 200"
+              value={val.budgetCost}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="budget-form-btn">
+            <button type="submit" className="btn-save">
+              create
+            </button>
+            <button
+              className="btn-cancel"
+              onClick={props.onclick('cancel')}
+            >
+              cancel
+            </button>
           </div>
         </div>
       </div>
