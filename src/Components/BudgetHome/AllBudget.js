@@ -1,6 +1,13 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, {
+  useState,
+  useContext,
+  useEffect,
+  useRef,
+} from 'react';
 import AddBudgetImg from '../../assets/undraw_new_entries_nh3h.svg';
 import { BsPlusCircleFill } from 'react-icons/bs';
+import { useDispatch, useSelector } from 'react-redux';
+import { clickCheckbox } from '../../Redux/toggleUtilityButton';
 import BudgetList from './BudgetList';
 import BudgetForm from './BudgetForm';
 import { GET_BUDGETS } from '../../Queries/Queries';
@@ -11,6 +18,13 @@ import { AuthContext } from '../../Context/AuthContext';
 import './budgethome.css';
 
 const AllBudget = props => {
+  // redux state code
+  const dispatch = useDispatch();
+  const toggleVal = useSelector(state => state.utility);
+  console.log(toggleVal);
+  const handleInputChange = e => {
+    console.log(e.target.name);
+  };
   const history = useHistory();
   // get auth from AuthContext
   const { user, timeFrame } = useContext(AuthContext);
@@ -51,11 +65,13 @@ const AllBudget = props => {
         <>
           {result.data.getBudgets.length > 0 ? (
             <>
-              {result.data.getBudgets.map(b => (
+              {result.data.getBudgets.map((b, i) => (
                 <BudgetList
+                  nameAttrib={i}
                   key={b.id}
                   budgetId={b.id}
                   budgetname={b.title}
+                  onchange={handleInputChange}
                 />
               ))}
               {bool ? (
