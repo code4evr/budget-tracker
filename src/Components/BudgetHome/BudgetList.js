@@ -1,5 +1,7 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { clickCheckbox } from '../../Redux/toggleUtilityButton';
 import {
   FaGripVertical,
   FaPencilAlt,
@@ -7,17 +9,18 @@ import {
 } from 'react-icons/fa';
 
 const BudgetList = props => {
-  console.log(props.budgetId);
   return (
-    <div className="row mt-5 justify-content-center">
-      <div className="col-sm-10 budget-info-container">
+    <div className="row mb-3">
+      <div className="col-sm-12 budget-info-container">
         <div className="budget-info d-flex">
-          <FaGripVertical size="1.15rem" className="mx-1" />
+          <FaGripVertical size="1.15rem" className="drag-button" />
           <input
-            type="radio"
-            name="budget-check"
+            type="checkbox"
+            onChange={e => props.onchange(e)}
+            name={`budget-check-${props.nameAttrib}`}
             id="budget-check"
-            className="budget-radio form-control"
+            className="budget-checkbox form-control"
+            checked={props.checked}
           />
           <div className="budget-heading pl-1">
             <Link to={`/app/budget/${props.budgetId}`}>
@@ -25,14 +28,14 @@ const BudgetList = props => {
             </Link>
           </div>
         </div>
-        <div className="budget-edits d-flex justify-content-end">
+        {/* <div className="budget-edits d-flex justify-content-end">
           <div>
             <FaPencilAlt size="1.15rem" />
           </div>
           <div>
             <FaRegTrashAlt size="1.15rem" />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
