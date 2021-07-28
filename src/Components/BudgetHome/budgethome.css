@@ -1,8 +1,17 @@
-.budget-home {
-  width: 100%;
-  margin-top: 6rem;
+.create-budget-form {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
 }
 
-.budget-home-grow {
-  margin-left: 8.33%;
+.drag-button {
+  visibility: hidden;
+  color: #cacaca;
+}
+
+.budget-info-container:hover {
+  cursor: pointer;
+}
+
+.budget-info-container:hover .drag-button {
+  visibility: visible;
 }
