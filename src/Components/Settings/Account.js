@@ -42,82 +42,88 @@ const Account = ({ data: { getUser } }) => {
 
   // console.log(getUser.createdAt.split('T')[1].split('.'));
   return (
-    <div className="container">
-      <div className="row pb-4">
-        <div className="col-10">
-          <h5>Personal Information</h5>
-        </div>
-        <div className="col-2">
-          <button className="edit-profile-btn" onClick={handleClick}>
-            {!toggle ? 'edit' : 'cancel'}
-          </button>
-        </div>
-      </div>
-      {!toggle ? (
-        <div className="account-wrapper">
-          <div className="row pb-4">
-            <div className="col-12">
-              <span className="pr-5">Photo</span>
-              <div className="profile-photo">
-                <img src={getUser.photo} alt="profile-img" />
-              </div>
-            </div>
+    <>
+      <div className="settings-content-header">Account</div>
+      <div className="container">
+        <div className="row pb-4">
+          <div className="col-10">
+            <h5>Personal Information</h5>
           </div>
-          <div className="row pb-4">
-            <div className="col-12">
-              <span className="pr-5">Name</span>
-              {getUser.name}
-            </div>
-          </div>
-          <div className="row pb-4">
-            <div className="col-12">
-              <span className="pr-5">Email</span>
-              {getUser.email}
-            </div>
+          <div className="col-2">
+            <button
+              className="edit-profile-btn"
+              onClick={handleClick}
+            >
+              {!toggle ? 'edit' : 'cancel'}
+            </button>
           </div>
         </div>
-      ) : (
-        <div className="edit-form">
-          <form onSubmit={handleSubmit}>
-            <div className="row pb-4">
+        {!toggle ? (
+          <div className="account-wrapper">
+            <div className="row">
               <div className="col-12">
                 <span className="pr-5">Photo</span>
                 <div className="profile-photo">
-                  <input
-                    type="file"
-                    name="photo"
-                    onChange={handleInputChange}
-                  />
+                  <img src={getUser.photo} alt="profile-img" />
                 </div>
               </div>
             </div>
-            <div className="row pb-4">
+            <div className="row">
               <div className="col-12">
                 <span className="pr-5">Name</span>
-                <input
-                  type="text"
-                  name="name"
-                  value={val.name}
-                  onChange={handleInputChange}
-                />
+                {getUser.name}
               </div>
             </div>
             <div className="row pb-4">
               <div className="col-12">
                 <span className="pr-5">Email</span>
-                <input
-                  type="email"
-                  name="email"
-                  value={val.email}
-                  onChange={handleInputChange}
-                />
+                {getUser.email}
               </div>
             </div>
-            <button className="btn btn-primary">Save</button>
-          </form>
-        </div>
-      )}
-    </div>
+          </div>
+        ) : (
+          <div className="edit-form">
+            <form onSubmit={handleSubmit}>
+              <div className="row pb-4">
+                <div className="col-12">
+                  <span className="pr-5">Photo</span>
+                  <div className="profile-photo">
+                    <input
+                      type="file"
+                      name="photo"
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="row pb-4">
+                <div className="col-12">
+                  <span className="pr-5">Name</span>
+                  <input
+                    type="text"
+                    name="name"
+                    value={val.name}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+              <div className="row pb-4">
+                <div className="col-12">
+                  <span className="pr-5">Email</span>
+                  <input
+                    type="email"
+                    name="email"
+                    value={val.email}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+              <button className="btn btn-primary">Save</button>
+            </form>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
