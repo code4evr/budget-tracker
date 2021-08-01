@@ -1,15 +1,17 @@
-.nav-container {
-  position: fixed;
-  width: calc(100% - 16.66% - 30px);
-  z-index: 1;
-  background: #fff;
+.navbar {
+  position: fixed !important;
+  height: 50px;
+  top: 0;
+  right: 0;
+  z-index: 1002;
+  background: #191b2c;
+  color: #fafafa;
+  width: 100%;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
 }
 
-nav {
-  border-radius: 8px;
-}
-
-/* toggle effect */
-.nav-container-grow {
-  width: calc(100% - 30px);
+.navbar-toggle {
+  left: 0;
+  width: 100%;
 }
