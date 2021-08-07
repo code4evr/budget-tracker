@@ -24,11 +24,11 @@ const UtilityBar = () => {
   return (
     <>
       <div className="row utility-bar">
-        <div className="checkbox-container">
+        <div className="form-check checkbox-container">
           <input
             type="checkbox"
             name="checkbox"
-            className="checkbox"
+            className="form-check-input"
           />
           <div className="other-utility">
             <div className="utility-btn">
