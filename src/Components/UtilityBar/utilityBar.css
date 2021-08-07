@@ -6,15 +6,13 @@
 
 .checkbox-container {
   position: relative;
-  display: flex;
+  display: flex !important;
   align-items: center;
   top: 4px;
   margin-left: 1.25rem;
 }
 
 .checkbox-container input[type='checkbox'] {
-  appearance: none;
-  -webkit-appearance: none;
   height: 20px;
   width: 20px;
   background: #fff;
