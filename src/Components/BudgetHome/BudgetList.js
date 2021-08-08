@@ -18,9 +18,10 @@ const BudgetList = props => {
             type="checkbox"
             onChange={e => props.onchange(e)}
             name={`budget-check-${props.nameAttrib}`}
-            id="budget-check"
+            id={`budget-check-${props.nameAttrib}`}
             className="budget-checkbox form-control"
-            checked={props.checked}
+            ref={props.checkRef}
+            // checked={props.checked}
           />
           <div className="budget-heading pl-1">
             <Link to={`/app/budget/${props.budgetId}`}>
@@ -28,14 +29,6 @@ const BudgetList = props => {
             </Link>
           </div>
         </div>
-        {/* <div className="budget-edits d-flex justify-content-end">
-          <div>
-            <FaPencilAlt size="1.15rem" />
-          </div>
-          <div>
-            <FaRegTrashAlt size="1.15rem" />
-          </div>
-        </div> */}
       </div>
     </div>
   );
