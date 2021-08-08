@@ -22,9 +22,27 @@ const AllBudget = props => {
   const dispatch = useDispatch();
   const toggleVal = useSelector(state => state.utility);
   console.log(toggleVal);
+  const checkBoxRef = useRef([]);
+  checkBoxRef.current = [];
   const handleInputChange = e => {
-    console.log(e.target.name);
+    console.log(`${e.target.name} is ${e.target.checked}`);
+    // if (checkBoxRef.current) {
+    //   checkBoxRef.current.map(c =>
+    //     c.name === e.target.name ? true : '',
+    //   );
+    // }
+    let indeterminateCheck = checkBoxRef.current.find(
+      c => c.checked === true,
+    );
+    console.log(indeterminateCheck);
+    dispatch(
+      clickCheckbox({
+        ...toggleVal,
+        isIndeterminate: indeterminateCheck ? true : false,
+      }),
+    );
   };
+
   const history = useHistory();
   // get auth from AuthContext
   const { user, timeFrame } = useContext(AuthContext);
@@ -55,9 +73,36 @@ const AllBudget = props => {
     }
   }, [user]);
 
+  useEffect(() => {
+    console.log('all budget useEffect run');
+    if (toggleVal.isChecked) {
+      checkBoxRef.current.map(
+        c => (c.checked = toggleVal.toggleUtility),
+      );
+    } else {
+      checkBoxRef.current.map(
+        c => (c.checked = toggleVal.toggleUtility),
+      );
+    }
+  }, [toggleVal.isChecked]);
+
+  useEffect(() => {
+    if (!toggleVal.isIndeterminate) {
+      checkBoxRef.current.map(
+        c => (c.checked = toggleVal.toggleUtility),
+      );
+    }
+  }, [toggleVal.isIndeterminate]);
+
   if (result.loading) {
     return <div>Loading...</div>;
   }
+
+  const addToRefs = el => {
+    if (el && !checkBoxRef.current.includes(el)) {
+      checkBoxRef.current.push(el);
+    }
+  };
 
   return (
     <>
@@ -67,10 +112,12 @@ const AllBudget = props => {
             <>
               {result.data.getBudgets.map((b, i) => (
                 <BudgetList
+                  checkRef={addToRefs}
                   nameAttrib={i}
                   key={b.id}
                   budgetId={b.id}
                   budgetname={b.title}
+                  // checked={toggleVal.isChecked ? true : false}
                   onchange={handleInputChange}
                 />
               ))}
