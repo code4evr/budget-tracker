@@ -4,10 +4,14 @@ const toggleUtilityButton = createSlice({
   name: 'utility',
   initialState: {
     toggleUtility: false,
+    isChecked: false,
+    isIndeterminate: false,
   },
   reducers: {
     clickCheckbox: (state, action) => {
-      state.toggleUtility = action.payload.val;
+      state.toggleUtility = action.payload.toggleUtility;
+      state.isChecked = action.payload.isChecked;
+      state.isIndeterminate = action.payload.isIndeterminate;
     },
   },
 });
