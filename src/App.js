@@ -23,6 +23,7 @@ import NewBudget from './Components/Modals/NewBudget';
 import store from './Redux/store';
 import NewExpense from './Components/Modals/NewExpense';
 import Tab from './Components/Tabs/Tab';
+import ConfirmModal from './Components/Modals/ConfirmModal';
 
 const App = () => {
   const [toggle, setToggle] = useState(false);
@@ -81,6 +82,7 @@ const App = () => {
 
                       <NewBudget />
                       <NewExpense />
+                      <ConfirmModal />
                     </div>
                   </div>
                 </Provider>
