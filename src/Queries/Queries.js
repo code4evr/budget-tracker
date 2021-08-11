@@ -46,6 +46,12 @@ export const NEW_BUDGET = gql`
   }
 `;
 
+export const DELETE_BUDGET = gql`
+  mutation deleteBudget($budgetId: [ID!]!) {
+    deleteBudget(budgetId: $budgetId)
+  }
+`;
+
 export const USER_LOGIN = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
