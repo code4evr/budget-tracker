@@ -5,6 +5,7 @@ const toggleModalSlice = createSlice({
   initialState: {
     toggleBudget: false,
     toggleExpense: false,
+    confirmModal: false,
   },
   reducers: {
     toggleBudgetModal: (state, action) => {
@@ -13,11 +14,15 @@ const toggleModalSlice = createSlice({
     toggleExpenseModal: (state, action) => {
       state.toggleExpense = action.payload.val;
     },
+    toggleConfirmModal: (state, action) => {
+      state.confirmModal = action.payload.val;
+    },
   },
 });
 
 export const {
   toggleBudgetModal,
   toggleExpenseModal,
+  toggleConfirmModal,
 } = toggleModalSlice.actions;
 export default toggleModalSlice.reducer;
