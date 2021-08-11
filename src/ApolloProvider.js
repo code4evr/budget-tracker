@@ -22,7 +22,7 @@ const authLink = setContext((_, { headers }) => {
 
 const httpLink = authLink.concat(
   new createUploadLink({
-    uri: '/graphql',
+    uri: 'http://localhost:5000/graphql',
   }),
 );
 
