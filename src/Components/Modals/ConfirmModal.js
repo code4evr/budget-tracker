@@ -3,7 +3,7 @@ import { Button, IconButton } from '../Buttons/Buttons';
 import { toggleConfirmModal } from '../../Redux/toggleModalSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
-import { DELETE_BUDGET } from '../../Queries/Queries';
+import { DELETE_BUDGET, GET_BUDGETS } from '../../Queries/Queries';
 import { FaTimes } from 'react-icons/fa';
 import './newBudget.css';
 
@@ -31,6 +31,7 @@ const ConfirmModal = () => {
       );
       document.body.style.position = '';
     },
+    refetchQueries: [{ query: GET_BUDGETS }],
     variables: {
       budgetId: [...budgetVal.budgetToDelete],
     },
