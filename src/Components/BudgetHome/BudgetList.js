@@ -18,10 +18,9 @@ const BudgetList = props => {
             type="checkbox"
             onChange={e => props.onchange(e)}
             name={`budget-check-${props.nameAttrib}`}
-            id={`budget-check-${props.nameAttrib}`}
+            id={`${props.budgetId}`}
             className="budget-checkbox form-control"
             ref={props.checkRef}
-            // checked={props.checked}
           />
           <div className="budget-heading pl-1">
             <Link to={`/app/budget/${props.budgetId}`}>
