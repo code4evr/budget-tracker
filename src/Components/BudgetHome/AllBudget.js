@@ -8,6 +8,7 @@ import AddBudgetImg from '../../assets/undraw_new_entries_nh3h.svg';
 import { BsPlusCircleFill } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { clickCheckbox } from '../../Redux/toggleUtilityButton';
+import { deleteBudget } from '../../Redux/deleteBudgetSlice';
 import BudgetList from './BudgetList';
 import BudgetForm from './BudgetForm';
 import { GET_BUDGETS } from '../../Queries/Queries';
@@ -21,26 +22,49 @@ const AllBudget = props => {
   // redux state code
   const dispatch = useDispatch();
   const toggleVal = useSelector(state => state.utility);
+  const budgetVal = useSelector(state => state.del);
   console.log(toggleVal);
+  console.log(budgetVal);
+
   const checkBoxRef = useRef([]);
   checkBoxRef.current = [];
-  const handleInputChange = e => {
-    console.log(`${e.target.name} is ${e.target.checked}`);
-    // if (checkBoxRef.current) {
-    //   checkBoxRef.current.map(c =>
-    //     c.name === e.target.name ? true : '',
-    //   );
-    // }
+
+  const handleCheckboxInput = e => {
+    checkBoxRef.current.map(c =>
+      c.checked === true
+        ? dispatch(
+            deleteBudget({
+              val: c.id,
+            }),
+          )
+        : '',
+    );
+
     let indeterminateCheck = checkBoxRef.current.find(
-      c => c.checked === true,
+      c => c.checked === false,
     );
-    console.log(indeterminateCheck);
-    dispatch(
-      clickCheckbox({
-        ...toggleVal,
-        isIndeterminate: indeterminateCheck ? true : false,
-      }),
-    );
+
+    if (indeterminateCheck) {
+      indeterminateCheck = checkBoxRef.current.find(
+        c => c.checked === true,
+      );
+
+      dispatch(
+        clickCheckbox({
+          ...toggleVal,
+          isIndeterminate: indeterminateCheck ? true : false,
+        }),
+      );
+    } else {
+      dispatch(
+        clickCheckbox({
+          ...toggleVal,
+          toggleUtility: false,
+          isChecked: false,
+          isIndeterminate: false,
+        }),
+      );
+    }
   };
 
   const history = useHistory();
@@ -118,7 +142,7 @@ const AllBudget = props => {
                   budgetId={b.id}
                   budgetname={b.title}
                   // checked={toggleVal.isChecked ? true : false}
-                  onchange={handleInputChange}
+                  onchange={handleCheckboxInput}
                 />
               ))}
               {bool ? (
