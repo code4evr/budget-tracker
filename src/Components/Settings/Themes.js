@@ -4,28 +4,31 @@ import './themes.css';
 
 const Themes = () => {
   return (
-    <div className="theme__wrapper">
-      <div className="theme__header">
-        <h4>Theme</h4>
+    <>
+      <div className="settings-content-header">Theme</div>
+      <div className="container">
+        <div className="theme row">
+          <div className="col-4 col-lg-4 col-6 col-md-6">
+            <ThemeSkeleton themeName="Dark" classname="dark" />
+          </div>
+          <div className="col-4 col-lg-4 col-6 col-md-6">
+            <ThemeSkeleton themeName="Light" classname="light" />
+          </div>
+          <div className="col-4 col-lg-4 col-6 col-md-6">
+            <ThemeSkeleton themeName="Saffron" classname="saffron" />
+          </div>
+          <div className="col-4 col-lg-4 col-6 col-md-6">
+            <ThemeSkeleton themeName="Pink" classname="pink" />
+          </div>
+          <div className="col-4 col-lg-4 col-6 col-md-6">
+            <ThemeSkeleton
+              themeName="Navy Blue"
+              classname="navyBlue"
+            />
+          </div>
+        </div>
       </div>
-      <div className="theme row">
-        <div className="col-4 col-lg-4 col-6 col-md-6">
-          <ThemeSkeleton themeName="dark" />
-        </div>
-        <div className="col-4 col-lg-4 col-6 col-md-6">
-          <ThemeSkeleton themeName="light" />
-        </div>
-        <div className="col-4 col-lg-4 col-6 col-md-6">
-          <ThemeSkeleton themeName="saffron" />
-        </div>
-        <div className="col-4 col-lg-4 col-6 col-md-6">
-          <ThemeSkeleton themeName="pink" />
-        </div>
-        <div className="col-4 col-lg-4 col-6 col-md-6">
-          <ThemeSkeleton themeName="blood-red" />
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 
